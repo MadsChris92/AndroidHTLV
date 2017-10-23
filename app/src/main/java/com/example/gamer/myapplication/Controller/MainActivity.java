@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity{
 
     /**
      Henter data from HLTV i en anden tråd, da processen kan tage lang tid.
-     Dataen bruges i en ancen activity, men burde være preloaded som baggrundsproces.
+     Dataen bruges i en anden activity, men burde være preloaded som baggrundsproces.
      */
     public void backGroundProcess(){
         new Thread(new Runnable() {

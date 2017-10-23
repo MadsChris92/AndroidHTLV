@@ -124,7 +124,6 @@ public class WebActivity extends AppCompatActivity {
         }else {
             grid.setAdapter(new MyAdapter(getBaseContext(), specMatches, favTeams));
         }
-
     }
 }
 

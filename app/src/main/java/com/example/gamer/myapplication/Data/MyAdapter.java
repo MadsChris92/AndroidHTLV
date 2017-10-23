@@ -31,7 +31,7 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public String getItem(int i) {
-        return list.get(i).getDate().toString();
+        return list.get(i).getDate();
     }
 
     @Override
