@@ -27,7 +27,6 @@ public class UserActivity extends AppCompatActivity {
     LinearLayout container;
     String username;
     DatabaseHelper myDb;
-    GridView grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class UserActivity extends AppCompatActivity {
     public void submitTeam(View view) {
         if(myDb.insertData(username, teamTxt.getText().toString())){
             Toast.makeText(getBaseContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+            teamTxt.setText("");
         }else{
             Toast.makeText(getBaseContext(), "Insertion Failed", Toast.LENGTH_LONG).show();
         }
