@@ -67,8 +67,10 @@ public class MyAdapter extends BaseAdapter {
         type.setMaxHeight(maxHieght);
         type.setText(list.get(i).getGameType());
 
-        if(favTeams.contains(list.get(i).getTeamOneName().toLowerCase()) || favTeams.contains(list.get(i).getTeamTwoName().toLowerCase())){
+        if(favTeams.contains(list.get(i).getTeamOneName().toLowerCase())){
             team1.setTextColor(Color.RED);
+        }
+        if(favTeams.contains(list.get(i).getTeamTwoName().toLowerCase())){
             team2.setTextColor(Color.RED);
         }
 

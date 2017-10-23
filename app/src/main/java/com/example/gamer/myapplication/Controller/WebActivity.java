@@ -61,7 +61,6 @@ public class WebActivity extends AppCompatActivity {
 
     private void setGridView(ArrayList<String> favTeams, ArrayList<Match> matches, ArrayList<String> teams){
         grid = (GridView) findViewById(R.id.grid);
-        Toast.makeText(getBaseContext(), favTeams.size() + "", Toast.LENGTH_LONG).show();
         grid.setAdapter(new MyAdapter(getBaseContext(), matches, favTeams));
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -123,6 +122,7 @@ public class WebActivity extends AppCompatActivity {
             grid.setAdapter(new MyAdapter(getBaseContext(), matches, favTeams));
         }else {
             grid.setAdapter(new MyAdapter(getBaseContext(), specMatches, favTeams));
+            searchTxt.setText("");
         }
     }
 }
