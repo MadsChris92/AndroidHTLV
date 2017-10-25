@@ -1,6 +1,10 @@
 package com.example.gamer.myapplication.Data;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Match {
     private String teamOneName;
     private String teamOneName2;
@@ -47,6 +51,21 @@ public class Match {
     }
 
     public void setDate(String date) {
+        DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+
+        String df = df2.format(Calendar.getInstance().getTime());
+
+        df = df.substring(df.length() -2, df.length());
+        date = date.substring(date.length() -2, date.length());
+
+        int currentdate = Integer.parseInt(df);
+        int matchDate = Integer.parseInt(date);
+
+        if(matchDate == currentdate){
+            date = "tdy";
+        }if(matchDate == currentdate + 1){
+            date = "tmr";
+        }
         this.date = date;
     }
 
@@ -65,18 +84,10 @@ public class Match {
         this.gameType = gameType;
     }
 
-    private void lengthen(){
-        if(st.length() < 40) {
-            st = st + " ";
-            lengthen();
-        }
-    }
 
     public String toString(){
         st = "[" + time +  "]: " + teamOneName + " " + teamOneName2 +  " vs " + teamTwoName +
                 " [" + gameType + "] ";
-
-//        lengthen();
 
         if(time != null){
             return st;

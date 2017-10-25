@@ -16,7 +16,7 @@ public class MyAdapter extends BaseAdapter {
     private ArrayList<Match> list;
     private ArrayList<String> favTeams;
     private Context context;
-    private int teamWidth = 300, timeWidth = 150, typeWidth = 100, maxHieght = 50;
+    private int teamWidth = 300, timeWidth = 150, typeWidth = 150, maxHieght = 50;
 
     public MyAdapter(Context context, ArrayList<Match> objects, ArrayList<String> favTeams){
         this.list = objects;
@@ -50,8 +50,8 @@ public class MyAdapter extends BaseAdapter {
         team1.setText(list.get(i).getTeamOneName());
 
         TextView team2 = new TextView(context);
-        team2.setMinWidth(teamWidth);
-        team2.setMaxWidth(teamWidth);
+        team2.setMinWidth(teamWidth-20);
+        team2.setMaxWidth(teamWidth-20);
         team2.setMaxHeight(maxHieght);
         team2.setText(list.get(i).getTeamTwoName());
 
@@ -67,6 +67,12 @@ public class MyAdapter extends BaseAdapter {
         type.setMaxHeight(maxHieght);
         type.setText(list.get(i).getGameType());
 
+        TextView day = new TextView(context);
+        day.setMinWidth(typeWidth);
+        day.setMaxWidth(typeWidth);
+        day.setMaxHeight(maxHieght);
+        day.setText(list.get(i).getDate());
+
         if(favTeams.contains(list.get(i).getTeamOneName().toLowerCase())){
             team1.setTextColor(Color.RED);
         }
@@ -79,6 +85,7 @@ public class MyAdapter extends BaseAdapter {
         l.addView(team1);
         l.addView(team2);
         l.addView(type);
+        l.addView(day);
         l.setOrientation(LinearLayout.HORIZONTAL);
 
         return l;
