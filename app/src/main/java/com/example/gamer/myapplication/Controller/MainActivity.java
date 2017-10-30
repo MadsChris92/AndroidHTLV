@@ -28,20 +28,14 @@ public class MainActivity extends AppCompatActivity{
         nameTxt = (EditText) findViewById(R.id.nameEditText);
 
         webSearch = new WebSearch();
-        backGroundProcess();
+
+        webSearch.execute();
     }
 
     /**
      Henter data from HLTV i en anden tråd, da processen kan tage lang tid.
      Dataen bruges i en anden activity, men burde være preloaded som baggrundsproces.
      */
-    public void backGroundProcess(){
-        new Thread(new Runnable() {
-            public void run() {
-                webSearch.execute();
-            }
-        }).start();
-    }
 
 
     public void changeScene(Class c, String extraKey, String extraValue) {
