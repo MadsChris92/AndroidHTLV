@@ -11,6 +11,9 @@ import com.example.gamer.myapplication.R;
 import com.example.gamer.myapplication.Utility.WebSearch;
 
 public class MainActivity extends AppCompatActivity{
+    /**
+     * Der skal bruges internet forbindelse ellers vil  appen crashe ved startup
+     */
 
     public static WebSearch webSearch;
     private EditText nameTxt;
