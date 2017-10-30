@@ -20,7 +20,6 @@ public class MyAdapter extends BaseAdapter {
     private ArrayList<String> favTeams;
     private Context context;
     private int teamWidth = 300, timeWidth = 150, typeWidth = 150, maxHieght = 50;
-    public String searchString;
 
     public MyAdapter(Context context, ArrayList<Match> objects, ArrayList<String> favTeams){
         this.list = objects;

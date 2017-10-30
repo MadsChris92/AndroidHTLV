@@ -1,5 +1,6 @@
 package com.example.gamer.myapplication.Controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.gamer.myapplication.Data.Match;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 
 public class WebActivity extends AppCompatActivity {
     TextView txt;
-    LinearLayout container;
+    RelativeLayout container;
     String username, admin = "admin";
     GridView grid;
     ArrayList<Match> matches = new ArrayList<>();
@@ -60,6 +62,7 @@ public class WebActivity extends AppCompatActivity {
 
     private void setGridView(ArrayList<String> favTeams, ArrayList<Match> matches, ArrayList<String> teams){
         grid = (GridView) findViewById(R.id.grid);
+        setAdapter(getBaseContext(), matches, favTeams);
         grid.setAdapter(new MyAdapter(getBaseContext(), matches, favTeams));
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,6 +74,7 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void setTextView(ArrayList<String> favTeams, ArrayList<Match> matches) {
+        container = (RelativeLayout) findViewById(R.id.webContainer);
         txt = new TextView(getBaseContext());
         txt.setTextSize(14);
 
@@ -125,6 +129,8 @@ public class WebActivity extends AppCompatActivity {
         }
     }
 
+    public static void setAdapter(Context context, ArrayList<Match> list, ArrayList<String> favTeams){
 
+    }
 }
 
