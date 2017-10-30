@@ -16,6 +16,12 @@ import java.util.Calendar;
 
 public class WebSearch extends AsyncTask<Void, Void, Void>{
 
+    /**
+     * An asynchronous task is defined by a computation that runs on a background thread and whose result is published
+     * on the UI thread. An asynchronous task is defined by 3 generic types, called Params, Progress and Result,
+     * and 4 steps, called onPreExecute, doInBackground, onProgressUpdate and onPostExecute.
+     */
+
     private ArrayList<Character> charArray = new ArrayList<>();
     public ArrayList<String> words = new ArrayList<>();
     public ArrayList<Match> matches = new ArrayList<>();
@@ -42,7 +48,6 @@ public class WebSearch extends AsyncTask<Void, Void, Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        //webTxt.setText(websiteData);
         searchData();
     }
 
