@@ -77,10 +77,10 @@ public class MyAdapter extends BaseAdapter {
         day.setText(list.get(i).getDate());
 
         if(favTeams.contains(list.get(i).getTeamOneName().toLowerCase())){
-            team1.setTextColor(Color.RED);
+            team1.setTextColor(Color.GREEN);
         }
         if(favTeams.contains(list.get(i).getTeamTwoName().toLowerCase())){
-            team2.setTextColor(Color.RED);
+            team2.setTextColor(Color.GREEN);
         }
 
         LinearLayout l = new LinearLayout(context);

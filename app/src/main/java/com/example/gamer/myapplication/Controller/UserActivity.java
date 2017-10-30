@@ -43,19 +43,24 @@ public class UserActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         username = intent.getStringExtra("USERNAME");
+        container.setFocusable(true);
+        container.requestFocus();
+
+        displayData();
     }
 
     public void submitTeam(View view) {
         if(myDb.insertData(username, teamTxt.getText().toString())){
-            Toast.makeText(getBaseContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Data Inserted", Toast.LENGTH_SHORT).show();
             teamTxt.setText("");
+            displayData();
         }else{
-            Toast.makeText(getBaseContext(), "Insertion Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Insertion Failed", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void displayData(View view) {
+    public void displayData(){
         final Cursor res = myDb.getAllData();
         int count = 0;
         container.removeAllViews();
@@ -98,9 +103,10 @@ public class UserActivity extends AppCompatActivity {
 
     private void removeData(Context baseContext, String s, int id) {
         if(myDb.deleteData(id + "") > 0){
-            Toast.makeText(getBaseContext(), "Data Deleted", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Data Deleted", Toast.LENGTH_SHORT).show();
+            displayData();
         }else{
-            Toast.makeText(getBaseContext(), "Deletion Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Deletion Failed", Toast.LENGTH_SHORT).show();
         }
     }
 }
