@@ -74,6 +74,12 @@ public class WebSearch extends AsyncTask<Void, Void, Void>{
             if(dates.contains(words.get(i))){
                 date = words.get(i);
             }
+            if(i > words.size() - 6){
+
+            }else{
+                m.setDescription(words.get(i+2) + " " + words.get(i+3) + " " + words.get(i+4) + " " + words.get(i+5));
+            }
+
             m.setDate(date);
         }
         done = true;

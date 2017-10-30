@@ -60,7 +60,7 @@ public class WebActivity extends AppCompatActivity {
         }
     }
 
-    private void setGridView(ArrayList<String> favTeams, ArrayList<Match> matches, ArrayList<String> teams){
+    private void setGridView(ArrayList<String> favTeams, final ArrayList<Match> matches, ArrayList<String> teams){
         grid = (GridView) findViewById(R.id.grid);
         setAdapter(getBaseContext(), matches, favTeams);
         grid.setAdapter(new MyAdapter(getBaseContext(), matches, favTeams));
@@ -68,7 +68,7 @@ public class WebActivity extends AppCompatActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getBaseContext(),grid.getAdapter().getItem(i).toString(), Toast.LENGTH_SHORT).show();
+             Toast.makeText(getBaseContext(),matches.get(i).getDescription(), Toast.LENGTH_SHORT).show();
             }
         });
     }

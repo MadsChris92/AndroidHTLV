@@ -11,6 +11,16 @@ public class Match {
     private String teamTwoName;
     private String teamTwoName2;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
     public String getTime() {
         return time;
     }
