@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private String username;
     private TextView locTxt;
     LocationManager locationManager;
+    private TextView welTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         webSearch.execute();
 
         locTxt = (TextView) findViewById(R.id.locationTxt);
-
+        locTxt.setText("Searching for GPS...");
+        welTxt = (TextView) findViewById(R.id.welcomeTxt);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -58,15 +60,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+
+            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER, 0, 0, this);
-
-        locTxt.setText("Searching for GPS...");
-
-
-    }
+        }
 
 
     public void changeScene(Class c, String extraKey, String extraValue) {
@@ -99,14 +98,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
-        String TAG = "TAG";
-
-        locTxt.setText("");
-        String longitude = "Longitude: " + location.getLongitude();
-        Log.v(TAG, longitude);
-        String latitude = "Latitude: " + location.getLatitude();
-        Log.v(TAG, latitude);
-        locTxt.setText(latitude + " " + longitude);
 
         /**
          * Get city name
@@ -126,9 +117,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         catch (IOException e) {
             e.printStackTrace();
         }
-        String s = longitude + "\n" + latitude + "\n\nMy Current City is: "
-                + cityName;
-        locTxt.setText(s);
+        String s = cityName;
+        locTxt.setText("Connecting from: " + s);
     }
 
     @Override
