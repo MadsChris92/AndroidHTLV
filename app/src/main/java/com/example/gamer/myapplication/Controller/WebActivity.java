@@ -56,7 +56,6 @@ public class WebActivity extends AppCompatActivity {
         }else {
             setGridView(favTeams, matches, favTeams);
         }
-
     }
 
     private void setGridView(ArrayList<String> favTeams, ArrayList<Match> matches, ArrayList<String> teams){
@@ -125,5 +124,7 @@ public class WebActivity extends AppCompatActivity {
             searchTxt.setText("");
         }
     }
+
+
 }
 

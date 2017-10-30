@@ -2,12 +2,15 @@ package com.example.gamer.myapplication.Data;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.gamer.myapplication.Controller.WebActivity;
 import com.example.gamer.myapplication.Data.Match;
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ public class MyAdapter extends BaseAdapter {
     private ArrayList<String> favTeams;
     private Context context;
     private int teamWidth = 300, timeWidth = 150, typeWidth = 150, maxHieght = 50;
+    public String searchString;
 
     public MyAdapter(Context context, ArrayList<Match> objects, ArrayList<String> favTeams){
         this.list = objects;
@@ -42,7 +46,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        TextView team1 = new TextView(context);
+        final TextView team1 = new TextView(context);
         team1.setMinWidth(teamWidth);
         team1.setMaxWidth(teamWidth);
         team1.setMaxHeight(maxHieght);
@@ -90,4 +94,6 @@ public class MyAdapter extends BaseAdapter {
 
         return l;
     }
+
+
 }
