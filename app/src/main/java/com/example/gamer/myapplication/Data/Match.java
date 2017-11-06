@@ -11,30 +11,14 @@ public class Match {
     private String teamTwoName;
     private String teamTwoName2;
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     private String description;
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     private String time;
     private String date;
     private String st;
-
-
-
     private String gameType;
 
 
@@ -51,6 +35,20 @@ public class Match {
 
         this.time = time;
     }
+
+    public String toString(){
+        st = "[" + time +  "]: " + teamOneName + " " + teamOneName2 +  " vs " + teamTwoName +
+                " [" + gameType + "] ";
+
+        if(time != null){
+            return st;
+        }else return null;
+    }
+
+    /**
+     * Getters and Setters
+     * @return
+     */
 
     public String getTeamOneName() {
         return teamOneName;
@@ -93,14 +91,22 @@ public class Match {
         }
         this.gameType = gameType;
     }
-
-
-    public String toString(){
-        st = "[" + time +  "]: " + teamOneName + " " + teamOneName2 +  " vs " + teamTwoName +
-                " [" + gameType + "] ";
-
-        if(time != null){
-            return st;
-        }else return null;
+    public String getDescription() {
+        return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+
+
 }

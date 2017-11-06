@@ -51,7 +51,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         locTxt = (TextView) findViewById(R.id.locationTxt);
         locTxt.setText("Searching for GPS...");
         welTxt = (TextView) findViewById(R.id.welcomeTxt);
+
+
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -62,10 +66,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             // for ActivityCompat#requestPermissions for more details.
 
             requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
         }
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 0, 0, this);
-        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+    }
+
 
 
     public void changeScene(Class c, String extraKey, String extraValue) {

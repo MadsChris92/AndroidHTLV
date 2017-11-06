@@ -5,7 +5,8 @@
     android:id="@+id/webContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gamer.myapplication.Controller.WebActivity">
+    tools:context="com.example.gamer.myapplication.Controller.WebActivity"
+    android:background="@drawable/gradient">
 
     <GridView
         android:id="@+id/grid"
@@ -28,12 +29,17 @@
 
     <Button
         android:id="@+id/SearchBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-condensed"
         android:onClick="teamSearch"
         android:text="Search"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +54,8 @@
         android:ems="10"
         android:hint="Search for a team"
         android:inputType="textPersonName"
+        android:textColor="@android:color/holo_green_light"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/grid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/SearchBtn"

@@ -5,7 +5,8 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gamer.myapplication.Controller.MainActivity">
+    tools:context="com.example.gamer.myapplication.Controller.MainActivity"
+    android:background="@drawable/gradient">
 
     <Button
         android:id="@+id/hltvBtn"
@@ -17,11 +18,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-condensed"
         android:onClick="userBtn"
         android:text="User Preference"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,30 +39,38 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-condensed"
         android:onClick="goBtn"
         android:text="HLTV Matches"
         android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/welcomeTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="336dp"
+        android:layout_height="92dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="serif-monospace"
         android:text="HLTV App"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="55sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
 
     <Button
         android:id="@+id/usernameBtn"
@@ -69,8 +80,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="145dp"
+        android:fontFamily="sans-serif-condensed"
         android:onClick="changeUserName"
         android:text="OK"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintLeft_toRightOf="@+id/nameEditText"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,13 +93,19 @@
 
     <EditText
         android:id="@+id/nameEditText"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="145dp"
         android:ems="10"
+        android:fontFamily="sans-serif-condensed"
         android:hint="Enter Your Name"
         android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
 
@@ -94,7 +115,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="TextView"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
