@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         welTxt = (TextView) findViewById(R.id.welcomeTxt);
 
 
+        locationSetup();
+
+    }
+
+    public void locationSetup(){
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -64,9 +69,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-
             requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
     }

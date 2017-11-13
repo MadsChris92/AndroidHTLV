@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,7 +59,6 @@ public class UserActivity extends AppCompatActivity {
         }else{
             Toast.makeText(getBaseContext(), "Insertion Failed", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void displayData(){
@@ -76,6 +76,9 @@ public class UserActivity extends AppCompatActivity {
                 count++;
                 final TeamButton b = new TeamButton(getBaseContext(), res.getString(2), res.getInt(0));
                 b.setText(res.getString(2));
+                b.setBackgroundColor(4);
+
+                b.setTextSize(22);
                 //b.setTextColor(Color.GREEN);
                 //b.setBackground(null);
                 b.setOnClickListener(new View.OnClickListener() {
