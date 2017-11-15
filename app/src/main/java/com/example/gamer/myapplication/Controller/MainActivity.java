@@ -1,6 +1,8 @@
 package com.example.gamer.myapplication.Controller;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,16 +11,19 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gamer.myapplication.R;
+import com.example.gamer.myapplication.Utility.MyAlarmReceiver;
 import com.example.gamer.myapplication.Utility.WebSearch;
 
 import java.io.IOException;
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private TextView locTxt;
     LocationManager locationManager;
     private TextView welTxt;
+    MyAlarmReceiver myAlarmReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +60,31 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
 
         locationSetup();
+        myAlarmReceiver = new MyAlarmReceiver();
+        Button b = (Button) findViewById(R.id.button);
+
+
+
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlarmManager manger = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Intent myIntent;
+                PendingIntent pendingIntent;
+
+                myIntent = new Intent(MainActivity.this, MyAlarmReceiver.class);
+                pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0,myIntent, 0);
+
+                manger.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 3000, pendingIntent);
+            }
+        });
+
 
     }
 
     public void locationSetup(){
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

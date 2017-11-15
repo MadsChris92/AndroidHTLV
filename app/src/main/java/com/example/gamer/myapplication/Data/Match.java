@@ -29,8 +29,17 @@ public class Match {
         this.teamTwoName = teamTwoName;
         this.teamTwoName2 = teamTwoName2;
 
-        if(!time.contains(":")){
-            time = null;
+        if(teamOneName.length() > 10){
+            this.teamOneName = teamOneName.substring(0, 11);
+        }
+        if(teamTwoName.length() > 10){
+            this.teamTwoName = teamTwoName.substring(0, 11);
+        }
+
+
+
+        if(!time.contains(":") || time.length() > 6){
+            time = "99:99";
         }
 
         this.time = time;
@@ -86,8 +95,8 @@ public class Match {
     }
 
     public void setGameType(String gameType) {
-        if(gameType.contains("-")){
-            gameType = "???";
+        if(gameType.contains("-") || gameType.length() > 3){
+            gameType = "tba";
         }
         this.gameType = gameType;
     }

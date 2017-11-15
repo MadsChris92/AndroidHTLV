@@ -2,29 +2,42 @@ package com.example.gamer.myapplication.Data;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.EditText;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
-import com.example.gamer.myapplication.Controller.WebActivity;
-import com.example.gamer.myapplication.Data.Match;
-
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
     private ArrayList<Match> list;
     private ArrayList<String> favTeams;
+    ArrayList<TextView> textViews = new ArrayList<>();
     private Context context;
+
     private int teamWidth = 300, timeWidth = 150, typeWidth = 150, maxHieght = 50;
 
     public MyAdapter(Context context, ArrayList<Match> objects, ArrayList<String> favTeams){
         this.list = objects;
         this.context = context;
         this.favTeams = favTeams;
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+//        int height = size.y;
+
+        teamWidth = width/4 + 30;
+        typeWidth = width/9;
+        timeWidth = width/8;
+
     }
 
     @Override
@@ -49,32 +62,52 @@ public class MyAdapter extends BaseAdapter {
         team1.setMinWidth(teamWidth);
         team1.setMaxWidth(teamWidth);
         team1.setMaxHeight(maxHieght);
-
         team1.setText(list.get(i).getTeamOneName());
+        team1.setTextColor(Color.WHITE);
+        team1.setSingleLine(true);
 
         TextView team2 = new TextView(context);
         team2.setMinWidth(teamWidth-20);
         team2.setMaxWidth(teamWidth-20);
         team2.setMaxHeight(maxHieght);
         team2.setText(list.get(i).getTeamTwoName());
+        team2.setTextColor(Color.WHITE);
+        team2.setSingleLine(true);
 
         TextView time = new TextView(context);
         time.setMinWidth(timeWidth);
         time.setMaxWidth(timeWidth);
         time.setMaxHeight(maxHieght);
         time.setText(list.get(i).getTime());
+        time.setTextColor(Color.WHITE);
+        time.setSingleLine(true);
 
         TextView type = new TextView(context);
         type.setMinWidth(typeWidth);
         type.setMaxWidth(typeWidth);
         type.setMaxHeight(maxHieght);
         type.setText(list.get(i).getGameType());
+        type.setTextColor(Color.WHITE);
+        type.setSingleLine(true);
 
         TextView day = new TextView(context);
         day.setMinWidth(typeWidth);
         day.setMaxWidth(typeWidth);
         day.setMaxHeight(maxHieght);
         day.setText(list.get(i).getDate());
+        day.setTextColor(Color.WHITE);
+        day.setSingleLine(true);
+
+        /*
+        RadioButton btn = new RadioButton(context);
+        btn.setWidth(typeWidth);
+        btn.setHeight(maxHieght);
+        */
+        textViews.add(team1);
+        textViews.add(team2);
+        textViews.add(time);
+        textViews.add(type);
+        textViews.add(day);
 
         if(favTeams.contains(list.get(i).getTeamOneName().toLowerCase())){
             team1.setTextColor(Color.GREEN);
@@ -89,8 +122,13 @@ public class MyAdapter extends BaseAdapter {
         l.addView(team2);
         l.addView(type);
         l.addView(day);
+//        l.addView(btn);
         l.setOrientation(LinearLayout.HORIZONTAL);
 
         return l;
+    }
+
+    public void printGame(int i){
+
     }
 }
