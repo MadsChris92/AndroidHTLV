@@ -103,6 +103,7 @@ public class MyAdapter extends BaseAdapter {
         btn.setWidth(typeWidth);
         btn.setHeight(maxHieght);
         */
+
         textViews.add(team1);
         textViews.add(team2);
         textViews.add(time);
@@ -126,9 +127,5 @@ public class MyAdapter extends BaseAdapter {
         l.setOrientation(LinearLayout.HORIZONTAL);
 
         return l;
-    }
-
-    public void printGame(int i){
-
     }
 }

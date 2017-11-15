@@ -36,8 +36,6 @@ public class Match {
             this.teamTwoName = teamTwoName.substring(0, 11);
         }
 
-
-
         if(!time.contains(":") || time.length() > 6){
             time = "99:99";
         }

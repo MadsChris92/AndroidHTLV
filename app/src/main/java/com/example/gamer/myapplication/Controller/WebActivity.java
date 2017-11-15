@@ -3,15 +3,13 @@ package com.example.gamer.myapplication.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.gamer.myapplication.Data.Match;
@@ -24,7 +22,7 @@ import java.util.ArrayList;
 
 public class WebActivity extends AppCompatActivity {
     TextView txt;
-    RelativeLayout container;
+    ConstraintLayout container;
     String username, admin = "admin";
     GridView grid;
     ArrayList<Match> matches = new ArrayList<>();
@@ -54,7 +52,8 @@ public class WebActivity extends AppCompatActivity {
         }
 
         if(username.equalsIgnoreCase(admin)){
-            setTextView(favTeams, matches);
+            startActivity(new Intent(WebActivity.this, PopAdminActivity.class));
+            setGridView(favTeams, matches, favTeams);
         }else {
             setGridView(favTeams, matches, favTeams);
         }
@@ -71,45 +70,6 @@ public class WebActivity extends AppCompatActivity {
              Toast.makeText(getBaseContext(),matches.get(i).getDescription(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void setTextView(ArrayList<String> favTeams, ArrayList<Match> matches) {
-        container = (RelativeLayout) findViewById(R.id.webContainer);
-        txt = new TextView(getBaseContext());
-        txt.setTextSize(14);
-
-
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "TEST", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        if(username.equalsIgnoreCase(admin)){
-            txt.setText(MainActivity.webSearch.words.toString());
-            container.addView(txt);
-        }else {
-            String date = null;
-            for (Match m : matches) {
-
-                if (!m.getDate().equalsIgnoreCase(date) && m.toString() != null) {
-                    txt.append("\n[" + m.getDate() + "]\n");
-                }
-
-                if (m.toString() != null) {
-
-                    if (favTeams.contains(m.getTeamOneName().toLowerCase()) || favTeams.contains(m.getTeamTwoName().toLowerCase())) {
-                        txt.append(Html.fromHtml("<font color='#EE0000'>" + m.toString() + "</font>"));
-                        txt.append("\n");
-                    } else {
-                        txt.append(m.toString() + "\n");
-                    }
-                }
-                date = m.getDate();
-            }
-            container.addView(txt);
-        }
     }
 
     public void teamSearch(View view) {
