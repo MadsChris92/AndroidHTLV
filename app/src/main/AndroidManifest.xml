@@ -9,8 +9,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,8 +28,12 @@
 
         <activity android:name=".Controller.WebActivity" />
         <activity android:name=".Controller.UserActivity" />
-        <activity android:name=".Controller.PopAdminActivity" android:theme="@style/AppTheme.CustomTheme">
-        </activity>
+        <activity
+            android:name=".Controller.PopAdminActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".Controller.PopTeamActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
     </application>
 
 </manifest>

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private TextView locTxt;
     LocationManager locationManager;
     private TextView welTxt;
-    MyAlarmReceiver myAlarmReceiver;
     boolean connected = false;
 
     @Override
@@ -61,23 +60,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         }else{
             locTxt.setText("No internet connection");
         }
-
-        myAlarmReceiver = new MyAlarmReceiver();
-        Button b = (Button) findViewById(R.id.button);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlarmManager manger = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                Intent myIntent;
-                PendingIntent pendingIntent;
-
-                myIntent = new Intent(MainActivity.this, MyAlarmReceiver.class);
-                pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0,myIntent, 0);
-
-                manger.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 3000, pendingIntent);
-            }
-        });
     }
 
     public void searchHltv(){

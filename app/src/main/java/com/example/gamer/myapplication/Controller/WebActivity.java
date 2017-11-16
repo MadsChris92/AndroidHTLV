@@ -67,7 +67,12 @@ public class WebActivity extends AppCompatActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-             Toast.makeText(getBaseContext(),matches.get(i).getDescription(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), PopTeamActivity.class);
+                intent.putExtra("DESC", matches.get(i).getDescription());
+                intent.putExtra("TEAM", matches.get(i).getTeamOneName() + " vs "  + matches.get(i).getTeamTwoName());
+                intent.putExtra("TIME", matches.get(i).getTime());
+                startActivity(intent);
+              //  Toast.makeText(getBaseContext(),matches.get(i).getDescription(), Toast.LENGTH_SHORT).show();
             }
         });
     }
