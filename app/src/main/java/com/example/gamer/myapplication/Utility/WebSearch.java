@@ -43,9 +43,7 @@ public class WebSearch extends AsyncTask<Void, Void, Void>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
-
     }
 
     @Override

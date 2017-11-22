@@ -21,6 +21,7 @@ import com.example.gamer.myapplication.Utility.MyAlarmReceiver;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class PopTeamActivity extends AppCompatActivity {
     String getDesc = "DESC", getTeam = "TEAM", getTime = "TIME";
@@ -59,29 +60,29 @@ public class PopTeamActivity extends AppCompatActivity {
         alarmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent myIntent = new Intent(PopTeamActivity.this, MyAlarmReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(PopTeamActivity.this, 0,myIntent, 0);
                 AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-                Date dat = new Date();
                 Calendar cal_alarm = Calendar.getInstance();
-                Calendar cal_now = Calendar.getInstance();
-                cal_now.setTime(dat);
+                Date dat = new Date();
                 cal_alarm.setTime(dat);
+
+
                 cal_alarm.set(Calendar.HOUR_OF_DAY,Integer.parseInt(hod));
                 cal_alarm.set(Calendar.MINUTE,Integer.parseInt(mod));
                 cal_alarm.set(Calendar.SECOND,0);
-                if(cal_alarm.before(cal_now)){
-                    cal_alarm.add(Calendar.DATE,1);
-                }
+                /*
+                cal_alarm.set(Calendar.HOUR_OF_DAY,23);
+                cal_alarm.set(Calendar.MINUTE,03);
+                */
 
 
-                Intent myIntent;
-                PendingIntent pendingIntent;
+                long timeToAlarm = TimeUnit.MILLISECONDS.toMinutes(cal_alarm.getTimeInMillis() - System.currentTimeMillis());
 
-                myIntent = new Intent(PopTeamActivity.this, MyAlarmReceiver.class);
-                pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0,myIntent, 0);
 
                 manager.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), pendingIntent);
-                Toast.makeText(getBaseContext(), "Alarm set for " + hod + ":" +mod, Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Alarm goes of in " + timeToAlarm + " minutes[" + hod + ":" + mod + "]", Toast.LENGTH_LONG).show();
             }
         });
     }

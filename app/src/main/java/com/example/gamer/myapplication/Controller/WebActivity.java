@@ -61,7 +61,7 @@ public class WebActivity extends AppCompatActivity {
 
     private void setGridView(ArrayList<String> favTeams, final ArrayList<Match> matches, ArrayList<String> teams){
         grid = (GridView) findViewById(R.id.grid);
-        setAdapter(getBaseContext(), matches, favTeams);
+  //      setAdapter(getBaseContext(), matches, favTeams);
         grid.setAdapter(new MyAdapter(getBaseContext(), matches, favTeams));
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
